@@ -1,0 +1,1278 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Práctica 4 — Repaso para examen de Diseño y Programación Digital</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&display=swap"
+    rel="stylesheet">
+  <style>
+    :root {
+      --primary: #4f46e5;
+      --primary-light: #6366f1;
+      --primary-subtle: #eef2ff;
+      --primary-border: #c7d2fe;
+      --text-main: #0f172a;
+      --text-muted: #475569;
+      --text-subtle: #64748b;
+      --bg-body: #f8fafc;
+      --bg-card: #ffffff;
+      --bg-terminal: #0f172a;
+      --border-color: #e2e8f0;
+      --border-hover: #cbd5e1;
+      --accent-emerald: #059669;
+      --accent-emerald-bg: #ecfdf5;
+      --accent-amber: #d97706;
+      --accent-amber-bg: #fffbeb;
+      --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+      --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+      --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      background-color: var(--bg-body);
+      color: var(--text-main);
+      line-height: 1.65;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    .top-header {
+      background: linear-gradient(135deg, #1e1b4b 0%, #312e81 40%, #4338ca 100%);
+      color: #ffffff;
+      padding: 3.5rem 1.5rem 4rem;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+      position: relative;
+    }
+
+    .top-header::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      height: 4px;
+      background: linear-gradient(90deg, #38bdf8, #818cf8, #c084fc, #f472b6);
+    }
+
+    .header-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .badge-label {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      background: rgba(255, 255, 255, 0.12);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      color: #e0e7ff;
+      padding: 0.35rem 0.85rem;
+      border-radius: 9999px;
+      font-size: 0.85rem;
+      font-weight: 600;
+      letter-spacing: 0.025em;
+      text-transform: uppercase;
+      margin-bottom: 1rem;
+    }
+
+    .main-title {
+      font-size: clamp(1.85rem, 4vw, 2.75rem);
+      font-weight: 800;
+      letter-spacing: -0.025em;
+      line-height: 1.2;
+      margin-bottom: 1rem;
+      color: #ffffff;
+    }
+
+    .header-desc {
+      font-size: 1.125rem;
+      color: #c7d2fe;
+      max-width: 800px;
+      margin-bottom: 2rem;
+    }
+
+    .stat-cards-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 1rem;
+      margin-top: 1.5rem;
+    }
+
+    .stat-card {
+      background: rgba(255, 255, 255, 0.08);
+      backdrop-filter: blur(8px);
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      border-radius: 12px;
+      padding: 1rem 1.25rem;
+    }
+
+    .stat-card .stat-value {
+      font-size: 1.5rem;
+      font-weight: 800;
+      color: #38bdf8;
+    }
+
+    .stat-card .stat-text {
+      font-size: 0.875rem;
+      color: #e2e8f0;
+      font-weight: 500;
+    }
+
+    .layout-wrapper {
+      max-width: 1240px;
+      margin: 0 auto;
+      padding: 2.5rem 1.5rem 5rem;
+      display: grid;
+      grid-template-columns: 280px 1fr;
+      gap: 2.5rem;
+      align-items: start;
+    }
+
+    @media (max-width: 992px) {
+      .layout-wrapper {
+        grid-template-columns: 1fr;
+      }
+
+      .sidebar {
+        display: none;
+      }
+    }
+
+    .sidebar {
+      position: sticky;
+      top: 2rem;
+      background: var(--bg-card);
+      border: 1px solid var(--border-color);
+      border-radius: 14px;
+      padding: 1.25rem;
+      box-shadow: var(--shadow-sm);
+    }
+
+    .sidebar-title {
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.075em;
+      color: var(--text-subtle);
+      font-weight: 700;
+      margin-bottom: 0.75rem;
+      padding-bottom: 0.5rem;
+      border-bottom: 1px solid var(--border-color);
+    }
+
+    .sidebar-nav {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 0.25rem;
+    }
+
+    .sidebar-link {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0.5rem 0.75rem;
+      border-radius: 8px;
+      color: var(--text-muted);
+      text-decoration: none;
+      font-size: 0.875rem;
+      font-weight: 500;
+      transition: all 0.15s ease;
+    }
+
+    .sidebar-link:hover {
+      background: var(--primary-subtle);
+      color: var(--primary);
+    }
+
+    .sidebar-points {
+      background: #f1f5f9;
+      color: #475569;
+      font-size: 0.75rem;
+      padding: 0.15rem 0.5rem;
+      border-radius: 9999px;
+      font-weight: 600;
+    }
+
+    .content-area {
+      display: flex;
+      flex-direction: column;
+      gap: 2rem;
+    }
+
+    .card-section {
+      background: var(--bg-card);
+      border: 1px solid var(--border-color);
+      border-radius: 16px;
+      padding: 2.25rem;
+      box-shadow: var(--shadow-sm);
+      transition: border-color 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    .card-section:hover {
+      border-color: var(--border-hover);
+      box-shadow: var(--shadow-md);
+    }
+
+    .section-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 1rem;
+      margin-bottom: 1.5rem;
+      padding-bottom: 1rem;
+      border-bottom: 1px solid var(--border-color);
+    }
+
+    .section-title {
+      font-size: 1.5rem;
+      font-weight: 800;
+      color: var(--text-main);
+      display: flex;
+      align-items: center;
+      gap: 0.65rem;
+      letter-spacing: -0.02em;
+    }
+
+    .points-badge {
+      display: inline-flex;
+      align-items: center;
+      background: linear-gradient(135deg, #4f46e5 0%, #7c3aed 100%);
+      color: #ffffff;
+      padding: 0.35rem 0.9rem;
+      border-radius: 9999px;
+      font-size: 0.875rem;
+      font-weight: 700;
+      box-shadow: 0 2px 4px rgba(79, 70, 229, 0.25);
+    }
+
+    .subheading {
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: var(--text-main);
+      margin: 1.5rem 0 0.75rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    p {
+      color: var(--text-muted);
+      margin-bottom: 1rem;
+    }
+
+    .styled-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+      margin-bottom: 1.25rem;
+    }
+
+    .styled-list li {
+      position: relative;
+      padding-left: 1.5rem;
+      color: var(--text-muted);
+      font-size: 0.95rem;
+    }
+
+    .styled-list li::before {
+      content: '•';
+      position: absolute;
+      left: 0.35rem;
+      top: -0.05rem;
+      color: var(--primary);
+      font-size: 1.35rem;
+      line-height: 1;
+    }
+
+    .pill-grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      margin: 1rem 0 1.5rem;
+    }
+
+    .pill-item {
+      background: #f1f5f9;
+      border: 1px solid var(--border-color);
+      color: #334155;
+      font-size: 0.85rem;
+      font-weight: 600;
+      padding: 0.35rem 0.85rem;
+      border-radius: 8px;
+    }
+
+    .terminal-box {
+      background: var(--bg-terminal);
+      border-radius: 12px;
+      border: 1px solid #1e293b;
+      overflow: hidden;
+      margin: 1.25rem 0;
+      box-shadow: 0 8px 20px -4px rgba(15, 23, 42, 0.3);
+    }
+
+    .terminal-header {
+      background: #1e293b;
+      padding: 0.65rem 1rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      border-bottom: 1px solid #334155;
+    }
+
+    .terminal-dots {
+      display: flex;
+      gap: 6px;
+    }
+
+    .dot {
+      width: 11px;
+      height: 11px;
+      border-radius: 50%;
+    }
+
+    .dot-red {
+      background-color: #ef4444;
+    }
+
+    .dot-yellow {
+      background-color: #f59e0b;
+    }
+
+    .dot-green {
+      background-color: #10b981;
+    }
+
+    .terminal-title {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.75rem;
+      color: #94a3b8;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+
+    .terminal-body {
+      padding: 1.15rem 1.25rem;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.9rem;
+      color: #f8fafc;
+      overflow-x: auto;
+      line-height: 1.6;
+    }
+
+    .cmd-line {
+      display: block;
+      color: #f8fafc;
+      word-break: break-all;
+    }
+
+    .cmd-prompt {
+      color: #38bdf8;
+      font-weight: 700;
+      user-select: none;
+      margin-right: 0.5rem;
+    }
+
+    .cmd-highlight {
+      color: #a78bfa;
+      font-weight: 600;
+    }
+
+    .cmd-comment {
+      color: #64748b;
+    }
+
+    .tree-box {
+      background: #0f172a;
+      border-radius: 10px;
+      border: 1px solid #1e293b;
+      padding: 1.25rem;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.875rem;
+      color: #38bdf8;
+      white-space: pre;
+      overflow-x: auto;
+      line-height: 1.5;
+      margin: 1rem 0;
+    }
+
+    .image-preview-card {
+      background: #f8fafc;
+      border: 2px dashed #cbd5e1;
+      border-radius: 12px;
+      padding: 1.25rem;
+      margin: 1.25rem 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.75rem;
+    }
+
+    .preview-image {
+      width: 100%;
+      max-height: 450px;
+      object-fit: contain;
+      border-radius: 8px;
+      border: 1px solid #e2e8f0;
+      box-shadow: var(--shadow-sm);
+    }
+
+    .image-tag {
+      font-size: 0.8rem;
+      font-weight: 600;
+      color: #64748b;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.35rem;
+    }
+
+    .alert-callout {
+      border-radius: 12px;
+      padding: 1.25rem 1.5rem;
+      margin: 1.5rem 0;
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+    }
+
+    .alert-help {
+      background: var(--accent-amber-bg);
+      border: 1px solid #fde68a;
+      border-left: 5px solid var(--accent-amber);
+    }
+
+    .alert-help-title {
+      font-weight: 700;
+      color: #92400e;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-size: 0.95rem;
+    }
+
+    .alert-help-content {
+      color: #78350f;
+      font-size: 0.925rem;
+    }
+
+    .alert-danger {
+      background: #fef2f2;
+      border: 1px solid #fecaca;
+      border-left: 5px solid #ef4444;
+    }
+
+    .alert-danger-title {
+      font-weight: 700;
+      color: #991b1b;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-size: 0.95rem;
+    }
+
+    .alert-danger-content {
+      color: #7f1d1d;
+      font-size: 0.925rem;
+    }
+
+    .styled-table-container {
+      overflow-x: auto;
+      border-radius: 12px;
+      border: 1px solid var(--border-color);
+      margin: 1.25rem 0;
+      box-shadow: var(--shadow-sm);
+    }
+
+    .data-table {
+      width: 100%;
+      border-collapse: collapse;
+      text-align: left;
+      font-size: 0.925rem;
+    }
+
+    .data-table thead {
+      background: #f1f5f9;
+      color: #1e293b;
+      font-weight: 700;
+    }
+
+    .data-table th,
+    .data-table td {
+      padding: 0.85rem 1.25rem;
+      border-bottom: 1px solid var(--border-color);
+    }
+
+    .data-table tbody tr:hover {
+      background: #f8fafc;
+    }
+
+    .data-table tbody tr:last-child td {
+      border-bottom: none;
+    }
+
+    .rubric-table th {
+      background: #1e1b4b;
+      color: #ffffff;
+      font-size: 0.9rem;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+
+    .rubric-table tr.total-row {
+      background: #f0fdf4;
+      font-weight: 800;
+      font-size: 1.05rem;
+      color: #166534;
+    }
+
+    .code-chip {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.85em;
+      background: #ede9fe;
+      color: #5b21b6;
+      padding: 0.2rem 0.45rem;
+      border-radius: 5px;
+      border: 1px solid #ddd6fe;
+      font-weight: 600;
+    }
+
+    .example-preview-box {
+      background: #f1f5f9;
+      border-left: 4px solid var(--primary);
+      border-radius: 0 8px 8px 0;
+      padding: 1rem 1.25rem;
+      margin: 1rem 0;
+      font-size: 0.95rem;
+      color: var(--text-main);
+    }
+
+    .example-preview-box strong {
+      color: var(--primary);
+    }
+
+    .repo-banner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 1rem;
+      background: #1e293b;
+      color: #ffffff;
+      padding: 1.25rem 1.5rem;
+      border-radius: 12px;
+      margin: 1rem 0;
+    }
+
+    .repo-link-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      background: #3b82f6;
+      color: #ffffff;
+      text-decoration: none;
+      font-weight: 700;
+      font-size: 0.875rem;
+      padding: 0.6rem 1.25rem;
+      border-radius: 8px;
+      transition: background 0.15s ease;
+    }
+
+    .repo-link-btn:hover {
+      background: #2563eb;
+    }
+
+    .footer-note {
+      text-align: center;
+      color: var(--text-subtle);
+      font-size: 0.875rem;
+      margin-top: 3rem;
+      padding-top: 2rem;
+      border-top: 1px solid var(--border-color);
+    }
+  </style>
+</head>
+
+<body>
+
+  <header class="top-header">
+    <div class="header-inner">
+      <div class="badge-label">Diseño y Programación Digital</div>
+      <h1 class="main-title">🧪 Práctica 4 — Repaso para examen de Diseño y Programación Digital</h1>
+      <p class="header-desc">
+        Guía de preparación, especificaciones de ejercicios y criterios de evaluación para la práctica individual en Git
+        y GitHub.
+      </p>
+
+      <div class="stat-cards-grid">
+        <div class="stat-card">
+          <div class="stat-value">6</div>
+          <div class="stat-text">Ejercicios Prácticos</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-value">100 pts</div>
+          <div class="stat-text">Puntuación Total</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-value">HTML + JS</div>
+          <div class="stat-text">Tecnologías Base</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-value">PokeAPI</div>
+          <div class="stat-text">Consumo REST API</div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <div class="layout-wrapper">
+    <aside class="sidebar">
+      <div class="sidebar-title">Contenidos</div>
+      <nav>
+        <ul class="sidebar-nav">
+          <li><a href="#objetivo" class="sidebar-link">Objetivo General</a></li>
+          <li><a href="#preparacion" class="sidebar-link">Preparación & Git</a></li>
+          <li><a href="#ejercicio-1" class="sidebar-link"><span>Ejercicio 1 — HTML</span> <span
+                class="sidebar-points">10 pts</span></a></li>
+          <li><a href="#ejercicio-2" class="sidebar-link"><span>Ejercicio 2 — Tabla</span> <span
+                class="sidebar-points">15 pts</span></a></li>
+          <li><a href="#ejercicio-3" class="sidebar-link"><span>Ejercicio 3 — JS Eventos</span> <span
+                class="sidebar-points">15 pts</span></a></li>
+          <li><a href="#ejercicio-4" class="sidebar-link"><span>Ejercicio 4 — Eventos + JSON</span> <span
+                class="sidebar-points">20 pts</span></a></li>
+          <li><a href="#ejercicio-5" class="sidebar-link"><span>Ejercicio 5 — PokeAPI</span> <span
+                class="sidebar-points">20 pts</span></a></li>
+          <li><a href="#ejercicio-6" class="sidebar-link"><span>Ejercicio 6 — Filtros API</span> <span
+                class="sidebar-points">20 pts</span></a></li>
+          <li><a href="#entrega" class="sidebar-link">Entrega de Rama</a></li>
+          <li><a href="#consideraciones" class="sidebar-link">Consideraciones</a></li>
+          <li><a href="#rubrica" class="sidebar-link">Rúbrica de Evaluación</a></li>
+        </ul>
+      </nav>
+    </aside>
+
+    <main class="content-area">
+
+      <section id="objetivo" class="card-section">
+        <div class="section-header">
+          <h2 class="section-title">Objetivo</h2>
+        </div>
+        <p>
+          Repasar y aplicar los contenidos desarrollados durante las clases de Diseño y Programación Digital, mediante
+          una serie de ejercicios prácticos de HTML y JavaScript.
+        </p>
+        <h3 class="subheading">Durante la práctica se trabajará con:</h3>
+        <div class="pill-grid">
+          <span class="pill-item">Estructura básica de HTML</span>
+          <span class="pill-item">Párrafos</span>
+          <span class="pill-item">Imágenes</span>
+          <span class="pill-item">Enlaces</span>
+          <span class="pill-item">Listas ordenadas y desordenadas</span>
+          <span class="pill-item">Tablas</span>
+          <span class="pill-item">JavaScript</span>
+          <span class="pill-item">Eventos</span>
+          <span class="pill-item">Manipulación del DOM</span>
+          <span class="pill-item">Consumo de APIs mediante fetch</span>
+          <span class="pill-item">PokeAPI</span>
+        </div>
+        <p>
+          La práctica se realizará de forma individual utilizando <strong>Git</strong> y <strong>GitHub</strong>.
+        </p>
+      </section>
+
+      <section id="preparacion" class="card-section">
+        <div class="section-header">
+          <h2 class="section-title">Preparación</h2>
+        </div>
+
+        <h3 class="subheading">Repositorio</h3>
+        <p>Los estudiantes recibirán acceso al repositorio como colaboradores.</p>
+
+        <div class="repo-banner">
+          <div>
+            <div style="font-size: 0.8rem; color: #94a3b8; text-transform: uppercase; font-weight: 700;">Repositorio
+              Oficial</div>
+            <div style="font-family: 'JetBrains Mono', monospace; font-size: 0.95rem; font-weight: 600;">
+              AlexSanderLopezOrcko/Practica4-Jueves</div>
+          </div>
+          <a href="https://github.com/AlexSanderLopezOrcko/Practica4-Jueves" target="_blank" rel="noopener noreferrer"
+            class="repo-link-btn">
+            Abrir en GitHub ↗
+          </a>
+        </div>
+
+        <p>Una vez recibido el acceso, clonar el repositorio e ingresar a la carpeta del proyecto:</p>
+        <div class="terminal-box">
+          <div class="terminal-header">
+            <div class="terminal-dots">
+              <span class="dot dot-red"></span>
+              <span class="dot dot-yellow"></span>
+              <span class="dot dot-green"></span>
+            </div>
+            <span class="terminal-title">Terminal</span>
+          </div>
+          <div class="terminal-body">
+            <span class="cmd-line"><span class="cmd-prompt">$</span>git clone
+              https://github.com/AlexSanderLopezOrcko/Practica4-Jueves.git</span>
+            <span class="cmd-line"><span class="cmd-prompt">$</span>cd Practica4-Jueves</span>
+          </div>
+        </div>
+
+        <h3 class="subheading">Crear rama de trabajo</h3>
+        <p>Cada estudiante debe trabajar en su propia rama. La rama debe tener el siguiente formato:</p>
+
+        <div class="terminal-box">
+          <div class="terminal-header">
+            <div class="terminal-dots">
+              <span class="dot dot-red"></span>
+              <span class="dot dot-yellow"></span>
+              <span class="dot dot-green"></span>
+            </div>
+            <span class="terminal-title">Formato de rama</span>
+          </div>
+          <div class="terminal-body">
+            <span class="cmd-line"><span class="cmd-prompt">$</span>git checkout -b practica4-<span
+                class="cmd-highlight">TU-NOMBRE-COMPLETO</span></span>
+          </div>
+        </div>
+
+        <p>Por ejemplo:</p>
+        <div class="terminal-box">
+          <div class="terminal-header">
+            <div class="terminal-dots">
+              <span class="dot dot-red"></span>
+              <span class="dot dot-yellow"></span>
+              <span class="dot dot-green"></span>
+            </div>
+            <span class="terminal-title">Ejemplo</span>
+          </div>
+          <div class="terminal-body">
+            <span class="cmd-line"><span class="cmd-prompt">$</span>git checkout -b
+              practica4-AlexSanderLopezOrcko</span>
+          </div>
+        </div>
+
+        <div class="alert-callout alert-danger">
+          <div class="alert-danger-title">⚠️ Importante</div>
+          <div class="alert-danger-content">
+            Todo el trabajo debe realizarse en la rama personal. No realizar cambios directamente sobre main.
+          </div>
+        </div>
+
+        <h3 class="subheading">Estructura inicial</h3>
+        <p>El repositorio contará con una carpeta para cada ejercicio:</p>
+
+        <pre class="tree-box">Practica4-Jueves/
+├── ejercicio1/
+├── ejercicio2/
+├── ejercicio3/
+├── ejercicio4/
+├── ejercicio5/
+└── ejercicio6/</pre>
+
+        <p>
+          Cada ejercicio deberá realizarse dentro de su carpeta correspondiente. Algunos ejercicios contarán con
+          archivos iniciales que deberán utilizarse como parte de la actividad.
+        </p>
+      </section>
+
+      <section id="ejercicio-1" class="card-section">
+        <div class="section-header">
+          <h2 class="section-title">Ejercicio 1 — HTML básico</h2>
+          <span class="points-badge">10 pts</span>
+        </div>
+
+        <h3 class="subheading">Objetivo</h3>
+        <p>Recrear mediante HTML la estructura mostrada en la siguiente plantilla.</p>
+
+        <h3 class="subheading">Plantilla</h3>
+        <div class="image-preview-card">
+          <img src="./assets/ejercicio1.png" alt="Plantilla de referencia del Ejercicio 1" class="preview-image">
+          <span class="image-tag">[IMAGEN DE REFERENCIA DEL EJERCICIO 1]</span>
+        </div>
+
+        <p>La página deberá contener los elementos mostrados en la plantilla. Entre ellos se encuentran:</p>
+        <ul class="styled-list">
+          <li>Título.</li>
+          <li>Párrafos.</li>
+          <li>Imagen.</li>
+          <li>Enlaces.</li>
+          <li>Lista ordenada.</li>
+          <li>Lista desordenada.</li>
+        </ul>
+
+        <h3 class="subheading">Condiciones</h3>
+        <ul class="styled-list">
+          <li>Utilizar únicamente HTML.</li>
+          <li>Recrear la estructura mostrada en la plantilla.</li>
+          <li>Utilizar correctamente los elementos HTML correspondientes.</li>
+          <li>No utilizar CSS.</li>
+          <li>No utilizar JavaScript.</li>
+        </ul>
+
+        <div class="alert-callout alert-help">
+          <div class="alert-help-title">💡 Ayuda</div>
+          <div class="alert-help-content">
+            Revisa los elementos básicos de HTML utilizados durante las primeras clases: encabezados, párrafos,
+            imágenes, enlaces y listas.
+          </div>
+        </div>
+      </section>
+
+      <section id="ejercicio-2" class="card-section">
+        <div class="section-header">
+          <h2 class="section-title">Ejercicio 2 — Tabla HTML</h2>
+          <span class="points-badge">15 pts</span>
+        </div>
+
+        <h3 class="subheading">Objetivo</h3>
+        <p>Recrear mediante HTML la siguiente tabla.</p>
+
+        <h3 class="subheading">Datos de la tabla</h3>
+        <div class="styled-table-container">
+          <table class="data-table">
+            <thead>
+              <tr>
+                <th>Estudiante</th>
+                <th>Edad</th>
+                <th>Carrera</th>
+                <th>Semestre</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>Ana</strong></td>
+                <td>21</td>
+                <td>Sistemas</td>
+                <td>6</td>
+              </tr>
+              <tr>
+                <td><strong>Luis</strong></td>
+                <td>23</td>
+                <td>Sistemas</td>
+                <td>8</td>
+              </tr>
+              <tr>
+                <td><strong>María</strong></td>
+                <td>20</td>
+                <td>Sistemas</td>
+                <td>5</td>
+              </tr>
+              <tr>
+                <td><strong>Carlos</strong></td>
+                <td>22</td>
+                <td>Sistemas</td>
+                <td>7</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <p>La tabla deberá contener correctamente los encabezados, filas, columnas y datos proporcionados.</p>
+
+        <h3 class="subheading">Condiciones</h3>
+        <ul class="styled-list">
+          <li>Utilizar HTML.</li>
+          <li>No utilizar JavaScript.</li>
+          <li>La información debe coincidir con la tabla proporcionada.</li>
+          <li>La estructura debe ser equivalente a la tabla mostrada.</li>
+        </ul>
+
+        <div class="alert-callout alert-help">
+          <div class="alert-help-title">💡 Ayuda</div>
+          <div class="alert-help-content">
+            <p>Piensa en la estructura:</p>
+            <pre class="tree-box" style="margin: 0.5rem 0; background: #1e1b4b; color: #cbd5e1;">table
+├── fila
+│   ├── encabezado
+│   └── encabezado
+└── fila
+    ├── dato
+    └── dato</pre>
+            <p style="margin-top: 0.5rem;">
+              Los elementos principales que necesitas son <span class="code-chip">&lt;table&gt;</span>, <span
+                class="code-chip">&lt;tr&gt;</span>, <span class="code-chip">&lt;th&gt;</span> y <span
+                class="code-chip">&lt;td&gt;</span>.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <section id="ejercicio-3" class="card-section">
+        <div class="section-header">
+          <h2 class="section-title">Ejercicio 3 — JavaScript y eventos</h2>
+          <span class="points-badge">15 pts</span>
+        </div>
+
+        <h3 class="subheading">Objetivo</h3>
+        <p>Crear la interacción mostrada en la siguiente plantilla.</p>
+
+        <h3 class="subheading">Interfaz</h3>
+        <div class="image-preview-card">
+          <img src="./assets/ejercicio3.png" alt="Plantilla de referencia del Ejercicio 3" class="preview-image">
+          <span class="image-tag">[IMAGEN DE REFERENCIA DEL EJERCICIO 3]</span>
+        </div>
+
+        <p>
+          La interfaz contará con un campo para introducir un nombre, un botón y un espacio donde se mostrará el
+          resultado.
+        </p>
+        <p>
+          Al introducir un nombre y presionar el botón, deberá aparecer un saludo utilizando el nombre ingresado.
+        </p>
+
+        <div class="example-preview-box">
+          <strong>Por ejemplo:</strong><br>
+          Nombre: Pedro &nbsp; <span
+            style="background: #e2e8f0; padding: 2px 8px; border-radius: 4px; font-weight: bold;">[ SALUDAR ]</span>
+          &nbsp; ➔ &nbsp; <em>Hola, Pedro</em>
+        </div>
+
+        <h3 class="subheading">Condiciones</h3>
+        <ul class="styled-list">
+          <li>Utilizar HTML para la estructura.</li>
+          <li>Utilizar JavaScript para la interacción.</li>
+          <li>Utilizar un evento para detectar el clic del botón.</li>
+          <li>El mensaje debe cambiar según el nombre introducido.</li>
+          <li>Utilizar JavaScript para modificar el contenido de la página.</li>
+          <li>No utilizar onclick directamente en HTML.</li>
+        </ul>
+
+        <div class="alert-callout alert-help">
+          <div class="alert-help-title">💡 Ayuda</div>
+          <div class="alert-help-content">
+            <p>Necesitarás obtener los elementos HTML desde JavaScript y escuchar el evento del botón.</p>
+            <p>Puedes revisar:</p>
+            <div style="margin: 0.5rem 0;">
+              <span class="code-chip">document.getElementById()</span> y <span
+                class="code-chip">addEventListener()</span>
+            </div>
+            <p>Para cambiar un texto, revisa la propiedad:</p>
+            <div style="margin-top: 0.25rem;">
+              <span class="code-chip">textContent</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="ejercicio-4" class="card-section">
+        <div class="section-header">
+          <h2 class="section-title">Ejercicio 4 — Eventos + datos</h2>
+          <span class="points-badge">20 pts</span>
+        </div>
+
+        <p>En este ejercicio se proporcionará un archivo con información:</p>
+        <pre class="tree-box">ejercicio4/
+├── index.html
+├── script.js
+└── datos.json</pre>
+        <p>
+          El archivo <span class="code-chip">datos.json</span> contiene los datos que deberán utilizarse desde
+          JavaScript.
+        </p>
+
+        <h3 class="subheading">Objetivo</h3>
+        <p>Leer los datos proporcionados y generar dinámicamente una tabla HTML para mostrar los precios de los
+          combustibles (Gasolina, Diesel, GNV).</p>
+
+        <p>
+          La tabla deberá ser generada desde JavaScript, utilizando los datos de <span
+            class="code-chip">datos.json</span>.
+        </p>
+
+        <div class="example-preview-box">
+          <strong>Ejemplo de estructura de tabla:</strong><br><br>
+          <table
+            style="width: 100%; border-collapse: collapse; text-align: left; background: #ffffff; border-radius: 4px; overflow: hidden; border: 1px solid #cbd5e1;">
+            <thead style="background: #f1f5f9;">
+              <tr style="border-bottom: 2px solid #cbd5e1;">
+                <th style="padding: 8px 12px;">País</th>
+                <th style="padding: 8px 12px;">Combustible</th>
+                <th style="padding: 8px 12px;">Precio</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td colspan="3" style="padding: 8px 12px; text-align: center; color: #94a3b8; font-style: italic;">
+                  (Los datos se generarán aquí mediante JavaScript)
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <h3 class="subheading">Condiciones</h3>
+        <ul class="styled-list">
+          <li>Utilizar el archivo datos.json.</li>
+          <li>Utilizar JavaScript para procesar los datos.</li>
+          <li>Crear dinámicamente una tabla HTML (<span class="code-chip">&lt;table&gt;</span>).</li>
+          <li>Mostrar los precios correspondientes a Gasolina, Diesel y GNV.</li>
+          <li>Manipular el contenido del DOM utilizando JavaScript.</li>
+        </ul>
+
+        <div class="alert-callout alert-help">
+          <div class="alert-help-title">💡 Ayuda</div>
+          <div class="alert-help-content">
+            <p>Para recorrer los datos del JSON puedes usar bucles como:</p>
+            <div style="margin: 0.35rem 0;"><span class="code-chip">for</span> o <span class="code-chip">forEach</span>
+            </div>
+            <p>Puedes construir el HTML de la tabla como un texto (string) e insertarlo usando:</p>
+            <div style="margin: 0.35rem 0;"><span class="code-chip">elemento.innerHTML</span></div>
+          </div>
+        </div>
+      </section>
+
+      <section id="ejercicio-5" class="card-section">
+        <div class="section-header">
+          <h2 class="section-title">Ejercicio 5 — Consumo de API</h2>
+          <span class="points-badge">20 pts</span>
+        </div>
+
+        <h3 class="subheading">Objetivo</h3>
+        <p>Consumir una API REST utilizando JavaScript y mostrar la información obtenida en una interfaz previamente
+          preparada.</p>
+
+        <p>En este ejercicio se proporcionarán los archivos HTML y CSS:</p>
+        <pre class="tree-box">ejercicio5/
+├── index.html
+├── style.css
+└── script.js</pre>
+        <p>
+          El diseño de la interfaz ya estará preparado. No es necesario modificar el CSS. El HTML tendrá los elementos
+          necesarios y sus respectivos id.
+        </p>
+
+        <h3 class="subheading">Interfaz</h3>
+        <div class="image-preview-card">
+          <img src="./assets/ejercicio5.png" alt="Plantilla de referencia del Ejercicio 5" class="preview-image">
+          <span class="image-tag">[IMAGEN DE REFERENCIA DEL EJERCICIO 5]</span>
+        </div>
+
+        <p>El trabajo principal consiste en implementar la funcionalidad mediante JavaScript.</p>
+
+        <h3 class="subheading">API</h3>
+        <p>Se utilizará la PokeAPI (<a href="https://pokeapi.co/" target="_blank" style="color: #3b82f6; text-decoration: none; font-weight: 600;">https://pokeapi.co/</a>):</p>
+        <div class="terminal-box">
+          <div class="terminal-header">
+            <div class="terminal-dots">
+              <span class="dot dot-red"></span>
+              <span class="dot dot-yellow"></span>
+              <span class="dot dot-green"></span>
+            </div>
+            <span class="terminal-title">API Endpoint</span>
+          </div>
+          <div class="terminal-body">
+            <span class="cmd-line">https://pokeapi.co/api/v2/pokemon/</span>
+          </div>
+        </div>
+
+        <p>La aplicación deberá obtener información de un Pokémon y mostrar como mínimo:</p>
+        <ul class="styled-list">
+          <li>Nombre.</li>
+          <li>Imagen.</li>
+          <li>Tipo.</li>
+        </ul>
+
+        <h3 class="subheading">Condiciones</h3>
+        <ul class="styled-list">
+          <li>Utilizar fetch.</li>
+          <li>Realizar la petición desde JavaScript.</li>
+          <li>Utilizar los id proporcionados en el HTML.</li>
+          <li>Mostrar dinámicamente la información obtenida.</li>
+          <li>No modificar el CSS proporcionado.</li>
+          <li>No es necesario crear nuevamente la estructura HTML.</li>
+          <li>El objetivo principal es practicar el consumo de una API mediante JavaScript.</li>
+        </ul>
+
+        <div class="alert-callout alert-help">
+          <div class="alert-help-title">💡 Ayuda</div>
+          <div class="alert-help-content">
+            <p>La petición puede realizarse utilizando:</p>
+            <div style="margin: 0.35rem 0;"><span class="code-chip">fetch()</span></div>
+            <p>Recuerda que la respuesta de una API debe convertirse a JSON. Revisa:</p>
+            <div style="margin: 0.35rem 0;"><span class="code-chip">response.json()</span></div>
+            <p>Después podrás acceder a los datos obtenidos para mostrarlos en los elementos HTML.</p>
+          </div>
+        </div>
+      </section>
+
+      <section id="ejercicio-6" class="card-section">
+        <div class="section-header">
+          <h2 class="section-title">Ejercicio 6 — PokeAPI + buscador</h2>
+          <span class="points-badge">20 pts</span>
+        </div>
+
+        <h3 class="subheading">Objetivo</h3>
+        <p>Utilizar JavaScript para consumir la PokeAPI (<a href="https://pokeapi.co/" target="_blank" style="color: #3b82f6; text-decoration: none; font-weight: 600;">https://pokeapi.co/</a>) y buscar un Pokémon específico por su nombre.</p>
+
+        <p>Al igual que en el ejercicio anterior, se proporcionará una interfaz HTML y CSS previamente preparada:</p>
+        <pre class="tree-box">ejercicio6/
+├── index.html
+├── style.css
+└── script.js</pre>
+        <p>El estudiante deberá implementar la funcionalidad únicamente mediante JavaScript.</p>
+
+        <h3 class="subheading">Resultado Esperado</h3>
+        <div class="image-preview-card">
+          <img src="./assets/ejercicio6.png" alt="Resultado esperado del Ejercicio 6" class="preview-image">
+          <span class="image-tag">[RESULTADO ESPERADO DEL EJERCICIO 6]</span>
+        </div>
+
+        <p>La interfaz contará con un campo de texto (input) y un botón para filtrar/buscar.</p>
+
+        <div class="example-preview-box">
+          <strong>Por ejemplo:</strong><br>
+          Nombre: <span style="background: #ffffff; border: 1px solid #cbd5e1; padding: 2px 8px; border-radius: 4px;">[ Pikachu ]</span> &nbsp;
+          <span style="background: #0284c7; color: white; padding: 2px 8px; border-radius: 4px; font-weight: bold;">[ FILTRAR ]</span>
+        </div>
+
+        <p>
+          Al anotar el nombre del Pokémon y presionar el botón de filtro, se deberá consultar la API y mostrar la imagen del Pokémon encontrado junto con algunos datos que devuelva la API.
+        </p>
+
+        <h3 class="subheading">Condiciones</h3>
+        <ul class="styled-list">
+          <li>Utilizar fetch.</li>
+          <li>Utilizar la PokeAPI.</li>
+          <li>Utilizar un evento de click para el botón de búsqueda.</li>
+          <li>Mostrar la imagen y datos del Pokémon dinámicamente.</li>
+          <li>Utilizar JavaScript para manipular el HTML existente.</li>
+          <li>No modificar el CSS proporcionado.</li>
+        </ul>
+
+        <div class="alert-callout alert-help">
+          <div class="alert-help-title">💡 Ayuda</div>
+          <div class="alert-help-content">
+            <p>Para obtener el texto ingresado en el input puedes utilizar:</p>
+            <div style="margin: 0.35rem 0;"><span class="code-chip">input.value</span></div>
+            <p>Para consumir la API y buscar el Pokémon por nombre necesitarás:</p>
+            <div style="margin: 0.35rem 0;"><span class="code-chip">fetch()</span></div>
+          </div>
+        </div>
+      </section>
+
+      <section id="entrega" class="card-section">
+        <div class="section-header">
+          <h2 class="section-title">Entrega</h2>
+        </div>
+        <p>Una vez finalizados todos los ejercicios, verificar los cambios y enviarlos mediante Git:</p>
+
+        <div class="terminal-box">
+          <div class="terminal-header">
+            <div class="terminal-dots">
+              <span class="dot dot-red"></span>
+              <span class="dot dot-yellow"></span>
+              <span class="dot dot-green"></span>
+            </div>
+            <span class="terminal-title">Comandos de Entrega</span>
+          </div>
+          <div class="terminal-body">
+            <span class="cmd-line"><span class="cmd-prompt">$</span>git status</span>
+            <span class="cmd-line"><span class="cmd-prompt">$</span>git add .</span>
+            <span class="cmd-line"><span class="cmd-prompt">$</span>git commit -m "feat: completa practica 4"</span>
+            <span class="cmd-line"><span class="cmd-prompt">$</span>git push origin <span
+                class="cmd-highlight">practica4-TU-NOMBRE-COMPLETO</span></span>
+          </div>
+        </div>
+
+        <p>Verificar en GitHub que la rama haya sido subida correctamente.</p>
+      </section>
+
+      <section id="consideraciones" class="card-section">
+        <div class="section-header">
+          <h2 class="section-title">Consideraciones</h2>
+        </div>
+        <ul class="styled-list">
+          <li>Cada ejercicio debe realizarse dentro de su carpeta correspondiente.</li>
+          <li>No trabajar directamente sobre main.</li>
+          <li>No modificar el trabajo de otros estudiantes.</li>
+          <li>Los ejercicios de HTML deben resolverse utilizando HTML.</li>
+          <li>Los ejercicios de JavaScript deben resolverse utilizando JavaScript.</li>
+          <li>En los ejercicios 5 y 6, el HTML y CSS proporcionados forman parte de la plantilla.</li>
+          <li>No modificar el CSS de los ejercicios 5 y 6.</li>
+          <li>Las ayudas proporcionadas son únicamente orientativas.</li>
+          <li>Se evaluará principalmente la correcta aplicación de los conceptos vistos durante las clases.</li>
+        </ul>
+      </section>
+
+      <section id="rubrica" class="card-section">
+        <div class="section-header">
+          <h2 class="section-title">📋 Rúbrica de evaluación</h2>
+        </div>
+
+        <div class="styled-table-container">
+          <table class="data-table rubric-table">
+            <thead>
+              <tr>
+                <th>Ejercicio</th>
+                <th>Contenido</th>
+                <th style="text-align: right;">Puntos</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>Ejercicio 1</strong></td>
+                <td>HTML básico</td>
+                <td style="text-align: right; font-weight: 700; color: var(--primary);">10 pts</td>
+              </tr>
+              <tr>
+                <td><strong>Ejercicio 2</strong></td>
+                <td>Tablas HTML</td>
+                <td style="text-align: right; font-weight: 700; color: var(--primary);">15 pts</td>
+              </tr>
+              <tr>
+                <td><strong>Ejercicio 3</strong></td>
+                <td>JavaScript + eventos</td>
+                <td style="text-align: right; font-weight: 700; color: var(--primary);">15 pts</td>
+              </tr>
+              <tr>
+                <td><strong>Ejercicio 4</strong></td>
+                <td>JavaScript + eventos + datos</td>
+                <td style="text-align: right; font-weight: 700; color: var(--primary);">20 pts</td>
+              </tr>
+              <tr>
+                <td><strong>Ejercicio 5</strong></td>
+                <td>Consumo de PokeAPI</td>
+                <td style="text-align: right; font-weight: 700; color: var(--primary);">20 pts</td>
+              </tr>
+              <tr>
+                <td><strong>Ejercicio 6</strong></td>
+                <td>PokeAPI + eventos + filtros</td>
+                <td style="text-align: right; font-weight: 700; color: var(--primary);">20 pts</td>
+              </tr>
+              <tr class="total-row">
+                <td colspan="2">TOTAL</td>
+                <td style="text-align: right; font-size: 1.15rem; color: #15803d;">100 pts</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <footer class="footer-note">
+        Práctica 4 — Repaso para examen de Diseño y Programación Digital
+      </footer>
+
+    </main>
+  </div>
+
+</body>
+
+</html>
