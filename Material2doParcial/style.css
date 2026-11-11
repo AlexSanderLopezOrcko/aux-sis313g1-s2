@@ -44,7 +44,13 @@ main {
   scrollbar-width: none;
   > div {
     min-width: 100%;
+    height: 100%;
     scroll-snap-align: start;
+    overflow-y: auto;
+    padding: 25px 40px;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
   }
 }
 
@@ -67,30 +73,200 @@ footer {
   }
 }
 
+.titulo {
+  color: var(--color-principal);
+  font-size: 40px;
+  text-align: center;
+  margin-bottom: 25px;
+}
+
+.subtitulo {
+  color: var(--color-principal);
+  font-size: 26px;
+  margin-bottom: 15px;
+}
+
+.subtitulo.centrado {
+  text-align: center;
+  margin-top: 25px;
+}
+
+.texto {
+  color: darkgrey;
+  font-size: 22px;
+  line-height: 1.5;
+  margin-bottom: 20px;
+}
+
+.destacado {
+  color: var(--color-principal);
+  font-size: 24px;
+  text-align: center;
+  margin-top: 25px;
+}
+
+.tarjetas {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+  gap: 20px;
+}
+
+.tarjetas.cuatro {
+  grid-template-columns: repeat(4, 1fr);
+}
+
+.tarjetas.tres {
+  grid-template-columns: repeat(3, 1fr);
+}
+
+.tarjetas.una {
+  grid-template-columns: 1fr;
+}
+
+.tarjeta {
+  border: 2px solid var(--color-principal);
+  border-radius: 15px;
+  padding: 20px;
+  background-color: rgba(0, 0, 0, 0.6);
+  h3 {
+    color: var(--color-principal);
+    font-size: 24px;
+    margin-bottom: 8px;
+    small {
+      display: block;
+      font-size: 16px;
+      color: white;
+    }
+  }
+  h4 {
+    color: white;
+    font-size: 18px;
+    margin-bottom: 8px;
+  }
+  p {
+    color: darkgrey;
+    font-size: 18px;
+    line-height: 1.4;
+  }
+  .icon {
+    font-size: 48px;
+    color: var(--color-principal);
+    margin-bottom: 10px;
+  }
+  .etiqueta {
+    display: inline-block;
+    color: black;
+    background-color: var(--color-principal);
+    border-radius: 8px;
+    padding: 3px 10px;
+    font-size: 14px;
+    margin-bottom: 10px;
+  }
+  .codigo {
+    color: var(--color-principal);
+    font-size: 24px;
+    font-family: monospace;
+  }
+  .flag {
+    color: var(--color-principal);
+    font-family: monospace;
+    font-size: 20px;
+    margin-top: 10px;
+  }
+}
+
+.lista {
+  margin-top: 25px;
+  p {
+    color: darkgrey;
+    font-size: 22px;
+    margin-bottom: 10px;
+    strong {
+      color: var(--color-principal);
+    }
+  }
+}
+
+.dos-columnas {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 30px;
+  align-items: center;
+  img {
+    width: 100%;
+    border-radius: 15px;
+  }
+}
+
+.columna-imagen img {
+  max-height: 50vh;
+  object-fit: contain;
+  margin-bottom: 15px;
+}
+
+.columna-texto {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.terminal {
+  background-color: black;
+  color: var(--color-principal);
+  border: 2px solid var(--color-principal);
+  border-radius: 15px;
+  padding: 20px;
+  font-size: 22px;
+  font-family: monospace;
+  line-height: 1.6;
+}
+
+.pasos {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 15px;
+}
+
+.chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  justify-content: center;
+  margin-top: 15px;
+  span {
+    border: 2px solid var(--color-principal);
+    border-radius: 20px;
+    padding: 8px 18px;
+    font-size: 20px;
+    color: white;
+  }
+}
+
 .slide1 {
   display: grid;
   grid-template-rows: 1fr 9fr;
+  background-image: url(./fondos/slide1_circuitos.png);
   > h1 {
     display: flex;
     justify-content: center;
     align-items: center;
     color: var(--color-principal);
   }
-  .contenedor1 {
+  > .contenedor1 {
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 10px;
-    div:nth-child(1) {
+    > div:nth-child(1) {
       margin: 10px;
-      h1 {
+      > h1 {
         font-size: 40px;
         margin-bottom: 15px;
       }
-      img {
+      > img {
         width: 100%;
         margin-bottom: 15px;
       }
-      .seguridad {
+      > .seguridad {
         display: flex;
         gap: 20px;
         align-items: center;
@@ -107,11 +283,55 @@ footer {
         }
       }
     }
-    div:nth-child(2) {
+    > div:nth-child(2) {
       margin: 10px;
       > p {
-        background-color: red;
+        color: black;
+        background-color: var(--color-principal);
+        font-size: 24px;
+        padding: 5px 15px;
+        border-radius: 8px;
+        display: inline-block;
+        margin-bottom: 15px;
+      }
+      > .pilar {
+        display: flex;
+        gap: 20px;
+        align-items: center;
+        margin-bottom: 20px;
+        .icon {
+          font-size: 60px;
+          color: var(--color-principal);
+          border: 3px solid var(--color-principal);
+          border-radius: 50%;
+          padding: 12px;
+        }
+        h3 {
+          color: var(--color-principal);
+          font-size: 28px;
+          margin-bottom: 5px;
+        }
+        p {
+          color: darkgrey;
+          font-size: 22px;
+        }
       }
     }
   }
+}
+
+.slide3 {
+  background-image: url(./fondos/slide3_hexagonos.png);
+}
+
+.slide5 {
+  background-image: url(./fondos/slide5_codigo_binario.png);
+}
+
+.slide8 {
+  background-image: url(./fondos/slide8_red_nodos.png);
+}
+
+.slide10 {
+  background-image: url(./fondos/slide10_circuitos_espejo.png);
 }

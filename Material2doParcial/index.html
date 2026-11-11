@@ -22,7 +22,7 @@
               Es el arte de proteger tus datos, tus dispositivos y tu vida
               digital de quien quiere robarlos, espiarlos o destruirlos.
             </h1>
-            <img src="./slide1_dispositivos_protegidos.png" alt="" />
+            <img src="./imagenes/slide1_dispositivos_protegidos.png" alt="" />
             <div class="seguridad">
               <iconify-icon
                 class="icon"
@@ -36,41 +36,354 @@
           </div>
           <div>
             <p>LOS 3 PILARES (TRÍADA CIA)</p>
-            <div>
-              <iconify-icon
-                class="icon"
-                icon="carbon:ibm-security"
-              ></iconify-icon>
-              <p>
-                Tu celular, tu banco, tu colegio y hasta tu consola dependen de
-                ella.
-              </p>
+            <div class="pilar">
+              <iconify-icon class="icon" icon="mdi:eye-off"></iconify-icon>
+              <div>
+                <h3>Confidencialidad</h3>
+                <p>Solo quien debe, puede ver la información.</p>
+              </div>
             </div>
-            <div>
-              <iconify-icon
-                class="icon"
-                icon="carbon:ibm-security"
-              ></iconify-icon>
-              <p>
-                Tu celular, tu banco, tu colegio y hasta tu consola dependen de
-                ella.
-              </p>
+            <div class="pilar">
+              <iconify-icon class="icon" icon="mdi:shield-check"></iconify-icon>
+              <div>
+                <h3>Integridad</h3>
+                <p>Nadie modifica tus datos sin que lo notes.</p>
+              </div>
             </div>
-            <div>
-              <iconify-icon
-                class="icon"
-                icon="carbon:ibm-security"
-              ></iconify-icon>
-              <p>
-                Tu celular, tu banco, tu colegio y hasta tu consola dependen de
-                ella.
-              </p>
+            <div class="pilar">
+              <iconify-icon class="icon" icon="mdi:server-network"></iconify-icon>
+              <div>
+                <h3>Disponibilidad</h3>
+                <p>Todo funciona cuando lo necesitas.</p>
+              </div>
             </div>
           </div>
         </div>
       </div>
-      <div>diapositiva2</div>
-      <div>diapositiva3</div>
+
+      <div class="slide2">
+        <h1 class="titulo">> Tipos de hackers</h1>
+        <div class="tarjetas">
+          <div class="tarjeta">
+            <iconify-icon class="icon" icon="mdi:hat-fedora"></iconify-icon>
+            <h3>Sombrero blanco</h3>
+            <h4>El hacker ético</h4>
+            <p>Tiene permiso. Busca fallos para repararlos antes que los malos. Trabaja como pentester o cazando recompensas (bug bounty).</p>
+          </div>
+          <div class="tarjeta">
+            <iconify-icon class="icon" icon="mdi:hat-fedora"></iconify-icon>
+            <h3>Sombrero negro</h3>
+            <h4>El criminal</h4>
+            <p>Sin permiso y por dinero: roba datos, secuestra equipos con ransomware y vende accesos.</p>
+          </div>
+          <div class="tarjeta">
+            <iconify-icon class="icon" icon="mdi:hat-fedora"></iconify-icon>
+            <h3>Sombrero gris</h3>
+            <h4>La zona gris</h4>
+            <p>Entra sin permiso pero sin mala intención y luego avisa del fallo… aun así es ilegal.</p>
+          </div>
+        </div>
+        <div class="lista">
+          <p><strong>Script kiddie:</strong> Usa herramientas hechas por otros sin entender cómo funcionan.</p>
+          <p><strong>Hacktivista:</strong> Hackea por una causa política o social (como Anonymous).</p>
+        </div>
+      </div>
+
+      <div class="slide3">
+        <h1 class="titulo">> Malware: software enemigo</h1>
+        <p class="texto">Malware = programa hecho para dañar, espiar o robar. Estos son los que más vas a encontrar:</p>
+        <div class="tarjetas cuatro">
+          <div class="tarjeta">
+            <iconify-icon class="icon" icon="mdi:virus"></iconify-icon>
+            <h3>Virus</h3>
+            <p>Se pega a archivos y se copia cuando los abres.</p>
+          </div>
+          <div class="tarjeta">
+            <iconify-icon class="icon" icon="mdi:lan-connect"></iconify-icon>
+            <h3>Gusano</h3>
+            <p>Se propaga solo por la red, sin que hagas nada.</p>
+          </div>
+          <div class="tarjeta">
+            <iconify-icon class="icon" icon="mdi:gift-outline"></iconify-icon>
+            <h3>Troyano</h3>
+            <p>Parece un programa legítimo, pero abre la puerta al hacker.</p>
+          </div>
+          <div class="tarjeta">
+            <iconify-icon class="icon" icon="mdi:lock-alert"></iconify-icon>
+            <h3>Ransomware</h3>
+            <p>Secuestra tus archivos y pide rescate en cripto.</p>
+          </div>
+          <div class="tarjeta">
+            <iconify-icon class="icon" icon="mdi:cctv"></iconify-icon>
+            <h3>Spyware</h3>
+            <p>Te espía: cámara, micrófono y mensajes.</p>
+          </div>
+          <div class="tarjeta">
+            <iconify-icon class="icon" icon="mdi:keyboard"></iconify-icon>
+            <h3>Keylogger</h3>
+            <p>Graba cada tecla que escribes, contraseñas incluidas.</p>
+          </div>
+          <div class="tarjeta">
+            <iconify-icon class="icon" icon="mdi:advertisements"></iconify-icon>
+            <h3>Adware</h3>
+            <p>Te llena de anuncios y rastrea lo que haces.</p>
+          </div>
+          <div class="tarjeta">
+            <iconify-icon class="icon" icon="mdi:robot-dead"></iconify-icon>
+            <h3>Botnet</h3>
+            <p>Tu equipo se vuelve un zombi al servicio del atacante.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="slide4">
+        <h1 class="titulo">> Así te hackean (fácil)</h1>
+        <div class="tarjetas">
+          <div class="tarjeta">
+            <iconify-icon class="icon" icon="mdi:email-alert"></iconify-icon>
+            <h3>Phishing</h3>
+            <p>Un correo, SMS o WhatsApp falso que te hace entregar tu clave.</p>
+          </div>
+          <div class="tarjeta">
+            <iconify-icon class="icon" icon="mdi:form-textbox-password"></iconify-icon>
+            <h3>Contraseñas débiles</h3>
+            <p>123456, 'password' o tu fecha de nacimiento: se rompen en segundos.</p>
+          </div>
+          <div class="tarjeta">
+            <iconify-icon class="icon" icon="mdi:wifi-alert"></iconify-icon>
+            <h3>WiFi pública</h3>
+            <p>Alguien en la misma red puede espiar lo que haces.</p>
+          </div>
+          <div class="tarjeta">
+            <iconify-icon class="icon" icon="mdi:account-alert"></iconify-icon>
+            <h3>Ingeniería social</h3>
+            <p>No hackean la máquina: te hackean a ti con engaños y confianza.</p>
+          </div>
+          <div class="tarjeta">
+            <iconify-icon class="icon" icon="mdi:usb-flash-drive"></iconify-icon>
+            <h3>USB desconocido</h3>
+            <p>Ese pendrive 'perdido' puede instalar malware al conectarlo.</p>
+          </div>
+          <div class="tarjeta">
+            <iconify-icon class="icon" icon="mdi:update"></iconify-icon>
+            <h3>Software desactualizado</h3>
+            <p>Fallos ya conocidos que tienen exploit público.</p>
+          </div>
+        </div>
+        <p class="destacado">El eslabón más débil de la seguridad siempre es el humano.</p>
+      </div>
+
+      <div class="slide5">
+        <h1 class="titulo">> Cómo protegerte</h1>
+        <div class="dos-columnas">
+          <div class="columna-imagen">
+            <img src="./imagenes/slide5_2fa_proteccion.png" alt="" />
+            <h2 class="subtitulo">Tu mejor antivirus es tu cabeza</h2>
+            <p class="texto">Desconfía, verifica y luego haz clic.</p>
+          </div>
+          <div class="tarjetas una">
+            <div class="tarjeta">
+              <iconify-icon class="icon" icon="mdi:key-variant"></iconify-icon>
+              <h3>Claves largas + gestor</h3>
+              <p>Una distinta por cuenta; usa un gestor de contraseñas.</p>
+            </div>
+            <div class="tarjeta">
+              <iconify-icon class="icon" icon="mdi:cellphone-lock"></iconify-icon>
+              <h3>Activa el 2FA</h3>
+              <p>Aunque roben tu clave, no entran sin el segundo código.</p>
+            </div>
+            <div class="tarjeta">
+              <iconify-icon class="icon" icon="mdi:update"></iconify-icon>
+              <h3>Actualiza todo</h3>
+              <p>Cada parche cierra una puerta que ya conocen los atacantes.</p>
+            </div>
+            <div class="tarjeta">
+              <iconify-icon class="icon" icon="mdi:magnify"></iconify-icon>
+              <h3>Piensa antes del clic</h3>
+              <p>¿Remitente raro? ¿Urgencia? ¿Premio gratis? Es trampa.</p>
+            </div>
+            <div class="tarjeta">
+              <iconify-icon class="icon" icon="mdi:shield-check"></iconify-icon>
+              <h3>VPN en WiFi pública</h3>
+              <p>O mejor: usa tus datos móviles para lo importante.</p>
+            </div>
+            <div class="tarjeta">
+              <iconify-icon class="icon" icon="mdi:database"></iconify-icon>
+              <h3>Haz copias de seguridad</h3>
+              <p>Regla 3-2-1: 3 copias, 2 medios, 1 fuera de casa.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="slide6">
+        <h1 class="titulo">> Ataques web y de red</h1>
+        <div class="dos-columnas">
+          <div class="columna-texto">
+            <h3 class="subtitulo">SQL INJECTION</h3>
+            <pre class="terminal">$ login
+usuario: admin' --
+clave:   (cualquiera)
+> ACCESO CONCEDIDO</pre>
+            <p class="texto">Engañas a la base de datos para que se salte la contraseña. Por eso las webs deben validar todo lo que escribes.</p>
+          </div>
+          <div class="tarjetas una">
+            <div class="tarjeta">
+              <iconify-icon class="icon" icon="mdi:code-braces"></iconify-icon>
+              <h3>XSS</h3>
+              <p>Inyectas código en una web y se ejecuta en el navegador de otros usuarios.</p>
+            </div>
+            <div class="tarjeta">
+              <iconify-icon class="icon" icon="mdi:server-off"></iconify-icon>
+              <h3>DDoS</h3>
+              <p>Miles de equipos saturan un servidor hasta tumbarlo.</p>
+            </div>
+            <div class="tarjeta">
+              <iconify-icon class="icon" icon="mdi:swap-horizontal"></iconify-icon>
+              <h3>Man-in-the-Middle</h3>
+              <p>Se ponen entre tú y el sitio para leer todo lo que envías.</p>
+            </div>
+            <div class="tarjeta">
+              <iconify-icon class="icon" icon="mdi:lock-open-variant"></iconify-icon>
+              <h3>Fuerza bruta</h3>
+              <p>Probar millones de contraseñas hasta acertar.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="slide7">
+        <h1 class="titulo">> Así piensa un hacker</h1>
+        <div class="pasos">
+          <div class="tarjeta">
+            <h3>1. Reconocer</h3>
+            <p>Recolecta información pública (OSINT) del objetivo.</p>
+          </div>
+          <div class="tarjeta">
+            <h3>2. Escanear</h3>
+            <p>Busca puertas abiertas y servicios con fallos.</p>
+          </div>
+          <div class="tarjeta">
+            <h3>3. Entrar</h3>
+            <p>Explota una vulnerabilidad y gana acceso.</p>
+          </div>
+          <div class="tarjeta">
+            <h3>4. Quedarse</h3>
+            <p>Deja una puerta trasera para volver cuando quiera.</p>
+          </div>
+          <div class="tarjeta">
+            <h3>5. Borrar huellas</h3>
+            <p>Elimina registros para que nadie lo note.</p>
+          </div>
+        </div>
+        <h2 class="subtitulo centrado">HERRAMIENTAS DEL HACKER ÉTICO</h2>
+        <div class="chips">
+          <span>Kali Linux</span>
+          <span>Nmap</span>
+          <span>Wireshark</span>
+          <span>Burp Suite</span>
+          <span>Metasploit</span>
+          <span>Hashcat</span>
+        </div>
+        <p class="destacado">Los hackers éticos siguen estas mismas fases, pero con permiso, para reparar los fallos.</p>
+      </div>
+
+      <div class="slide8">
+        <h1 class="titulo">> Criptografía: esconder la verdad</h1>
+        <div class="dos-columnas">
+          <div class="columna-texto">
+            <div class="tarjeta">
+              <h3>CIFRADO CÉSAR (+3)</h3>
+              <p class="codigo">HOLA → KROD</p>
+            </div>
+            <div class="tarjeta">
+              <h3>HASH (HUELLA DIGITAL)</h3>
+              <p class="codigo">hello → 5d41402a…c592</p>
+            </div>
+          </div>
+          <div class="tarjetas una">
+            <div class="tarjeta">
+              <iconify-icon class="icon" icon="mdi:key-variant"></iconify-icon>
+              <h3>Simétrico</h3>
+              <p>Una sola llave para cifrar y descifrar. Rápido. Ej: AES (tu WiFi y tus archivos).</p>
+            </div>
+            <div class="tarjeta">
+              <iconify-icon class="icon" icon="mdi:key-chain"></iconify-icon>
+              <h3>Asimétrico</h3>
+              <p>Llave pública para cifrar, llave privada para abrir. Ej: RSA, el candado de HTTPS.</p>
+            </div>
+            <div class="tarjeta">
+              <iconify-icon class="icon" icon="mdi:fingerprint"></iconify-icon>
+              <h3>Hash</h3>
+              <p>Una huella que no se puede revertir. Así se guardan las contraseñas, sin guardarlas.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="slide9">
+        <h1 class="titulo">> Cada área tiene su arena</h1>
+        <div class="tarjetas tres">
+          <div class="tarjeta">
+            <span class="etiqueta">PROGRAMADORES</span>
+            <iconify-icon class="icon" icon="mdi:code-braces"></iconify-icon>
+            <h3>ICPC</h3>
+            <p>Maratón mundial de programación por equipos: resuelve problemas de algoritmos lo más rápido posible.</p>
+          </div>
+          <div class="tarjeta">
+            <span class="etiqueta">DESARROLLADORES</span>
+            <iconify-icon class="icon" icon="mdi:cog"></iconify-icon>
+            <h3>Hackathon</h3>
+            <p>24 a 48 horas para crear una app o solución desde cero y presentarla ante jurados.</p>
+          </div>
+          <div class="tarjeta">
+            <span class="etiqueta">CIBERSEGURIDAD</span>
+            <iconify-icon class="icon" icon="mdi:flag"></iconify-icon>
+            <h3>CTF <small>Capture The Flag</small></h3>
+            <p>Hackeas sistemas hechos a propósito (legal) para encontrar banderas ocultas y sumar puntos.</p>
+            <p class="flag">flag{h4ck3r_n4c3}</p>
+            <div class="chips">
+              <span>Web</span>
+              <span>Cripto</span>
+              <span>Forense</span>
+              <span>Reversing</span>
+              <span>Pwn</span>
+              <span>Stego</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="slide10">
+        <h1 class="titulo">> Conviértete en el que protege</h1>
+        <div class="dos-columnas">
+          <div class="tarjetas">
+            <div class="tarjeta">
+              <iconify-icon class="icon" icon="mdi:shield-sword"></iconify-icon>
+              <h3>Pentester</h3>
+              <p>Te pagan por hackear con permiso.</p>
+            </div>
+            <div class="tarjeta">
+              <iconify-icon class="icon" icon="mdi:bug"></iconify-icon>
+              <h3>Bug bounty</h3>
+              <p>Empresas pagan recompensas por fallos.</p>
+            </div>
+            <div class="tarjeta">
+              <iconify-icon class="icon" icon="mdi:monitor-eye"></iconify-icon>
+              <h3>Analista SOC</h3>
+              <p>Vigila ataques en tiempo real.</p>
+            </div>
+            <div class="tarjeta">
+              <iconify-icon class="icon" icon="mdi:fingerprint"></iconify-icon>
+              <h3>Forense digital</h3>
+              <p>Investiga ciberdelitos y recupera evidencia.</p>
+            </div>
+          </div>
+          <img src="./imagenes/slide10_hacker_etico.png" alt="" />
+        </div>
+        <h2 class="subtitulo centrado">¿Hackeas o te hackean?</h2>
+        <p class="destacado">Faltan millones de profesionales de ciberseguridad en el mundo. Empieza hoy con un CTF.</p>
+      </div>
     </main>
 
     <!-- <footer>
