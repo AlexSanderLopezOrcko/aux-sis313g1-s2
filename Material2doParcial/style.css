@@ -1,0 +1,117 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  --color-principal: #01e08a;
+}
+
+body {
+  height: 100vh;
+  background: url(./fondo_general_web.png);
+  background-repeat: no-repeat;
+  display: grid;
+  /*
+  grid-template-rows: 1fr 8fr 1fr;
+  */
+  grid-template-rows: 1fr 9fr;
+  gap: 10px;
+}
+
+header {
+  display: flex;
+  justify-content: space-between;
+  color: white;
+  align-items: center;
+  margin: 0px 50px;
+  h2 {
+    font-size: 13px;
+    border: 3px solid var(--color-principal);
+    padding: 10px;
+    border-radius: 15px;
+  }
+}
+
+main {
+  margin: 0px 50px;
+  border: 3px solid var(--color-principal);
+  display: flex;
+  overflow-x: auto;
+  color: white;
+  scroll-snap-type: x mandatory;
+  scrollbar-width: none;
+  > div {
+    min-width: 100%;
+    scroll-snap-align: start;
+  }
+}
+
+footer {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  button {
+    border: none;
+    background-color: transparent;
+    height: 45px;
+    padding: 0px 30px;
+    color: white;
+    border: 3px solid var(--color-principal);
+    border-radius: 10px;
+    font-size: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+}
+
+.slide1 {
+  display: grid;
+  grid-template-rows: 1fr 9fr;
+  > h1 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: var(--color-principal);
+  }
+  .contenedor1 {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+    div:nth-child(1) {
+      margin: 10px;
+      h1 {
+        font-size: 40px;
+        margin-bottom: 15px;
+      }
+      img {
+        width: 100%;
+        margin-bottom: 15px;
+      }
+      .seguridad {
+        display: flex;
+        gap: 20px;
+        align-items: center;
+        .icon {
+          font-size: 70px;
+          color: var(--color-principal);
+          border: 3px solid var(--color-principal);
+          border-radius: 50%;
+          padding: 15px;
+        }
+        p {
+          color: darkgrey;
+          font-size: 24px;
+        }
+      }
+    }
+    div:nth-child(2) {
+      margin: 10px;
+      > p {
+        background-color: red;
+      }
+    }
+  }
+}
