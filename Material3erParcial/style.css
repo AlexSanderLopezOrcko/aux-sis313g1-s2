@@ -1,0 +1,393 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  --color-principal: #01e08a;
+}
+
+body {
+  min-height: 100vh;
+  background: url(./fondo_general_web.png);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-attachment: fixed;
+  background-color: black;
+  display: grid;
+  /*
+  grid-template-rows: 1fr 8fr 1fr;
+  */
+  /* header y slides mantienen el mismo tamaño de antes (100vh) */
+  grid-template-rows:
+    calc((100vh - 10px) * 0.1)
+    calc((100vh - 10px) * 0.9)
+    auto;
+  gap: 10px;
+}
+
+/* ===== DESDE AQUÍ EMPIEZA LA SECCIÓN DE GEMINI ===== */
+/* Zona debajo de los slides: recuadro (mitad de ancho y alto de los slides) + input */
+.zona-escritura {
+  margin: 30px 50px 40px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 15px;
+}
+
+.recuadro {
+  width: 50%;
+  height: calc((100vh - 10px) * 0.45);
+  border: 3px solid var(--color-principal);
+  background-color: rgba(0, 0, 0, 0.6);
+  color: white;
+  padding: 20px;
+  overflow-y: auto;
+  font-size: 18px;
+  line-height: 1.5;
+  white-space: pre-wrap; /* respeta los saltos de línea de la respuesta */
+}
+
+.entrada {
+  width: 50%;
+  padding: 12px 18px;
+  font-size: 20px;
+  color: white;
+  background-color: rgba(0, 0, 0, 0.6);
+  border: 3px solid var(--color-principal);
+  border-radius: 10px;
+  outline: none;
+}
+
+.entrada::placeholder {
+  color: darkgrey;
+}
+/* ===== AQUÍ TERMINA LA SECCIÓN DE GEMINI ===== */
+
+header {
+  display: flex;
+  justify-content: space-between;
+  color: white;
+  align-items: center;
+  margin: 0px 50px;
+  h2 {
+    font-size: 13px;
+    border: 3px solid var(--color-principal);
+    padding: 10px;
+    border-radius: 15px;
+  }
+}
+
+main {
+  margin: 0px 50px;
+  border: 3px solid var(--color-principal);
+  display: flex;
+  overflow-x: auto;
+  color: white;
+  scroll-snap-type: x mandatory;
+  scrollbar-width: none;
+  > div {
+    min-width: 100%;
+    height: 100%;
+    scroll-snap-align: start;
+    overflow-y: auto;
+    padding: 2.5vh 40px;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+  }
+}
+
+footer {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  button {
+    border: none;
+    background-color: transparent;
+    height: 45px;
+    padding: 0px 30px;
+    color: white;
+    border: 3px solid var(--color-principal);
+    border-radius: 10px;
+    font-size: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+}
+
+.titulo {
+  color: var(--color-principal);
+  font-size: clamp(26px, 5.5vh, 40px);
+  text-align: center;
+  margin-bottom: 2.5vh;
+}
+
+.subtitulo {
+  color: var(--color-principal);
+  font-size: clamp(18px, 3.5vh, 26px);
+  margin-bottom: 1.5vh;
+}
+
+.subtitulo.centrado {
+  text-align: center;
+  margin-top: 2.5vh;
+}
+
+.texto {
+  color: darkgrey;
+  font-size: clamp(15px, 3vh, 22px);
+  line-height: 1.4;
+  margin-bottom: 2vh;
+}
+
+.destacado {
+  color: var(--color-principal);
+  font-size: clamp(16px, 3.2vh, 24px);
+  text-align: center;
+  margin-top: 2.5vh;
+}
+
+.tarjetas {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+  gap: 2vh;
+}
+
+.tarjetas.cuatro {
+  grid-template-columns: repeat(4, 1fr);
+}
+
+.tarjetas.tres {
+  grid-template-columns: repeat(3, 1fr);
+}
+
+.tarjetas.una {
+  grid-template-columns: 1fr;
+}
+
+.tarjetas.dos {
+  grid-template-columns: 1fr 1fr;
+}
+
+.tarjeta {
+  border: 2px solid var(--color-principal);
+  border-radius: 15px;
+  padding: 1.8vh 18px;
+  background-color: rgba(0, 0, 0, 0.6);
+  h3 {
+    color: var(--color-principal);
+    font-size: clamp(17px, 3.2vh, 24px);
+    margin-bottom: 0.8vh;
+    small {
+      display: block;
+      font-size: 16px;
+      color: white;
+    }
+  }
+  h4 {
+    color: white;
+    font-size: clamp(14px, 2.5vh, 18px);
+    margin-bottom: 0.8vh;
+  }
+  p {
+    color: darkgrey;
+    font-size: clamp(14px, 2.5vh, 18px);
+    line-height: 1.35;
+  }
+  .icon {
+    font-size: clamp(28px, 6vh, 48px);
+    color: var(--color-principal);
+    margin-bottom: 0.8vh;
+  }
+  .etiqueta {
+    display: inline-block;
+    color: black;
+    background-color: var(--color-principal);
+    border-radius: 8px;
+    padding: 3px 10px;
+    font-size: 14px;
+    margin-bottom: 10px;
+  }
+  .codigo {
+    color: var(--color-principal);
+    font-size: clamp(16px, 3.2vh, 24px);
+    font-family: monospace;
+  }
+  .flag {
+    color: var(--color-principal);
+    font-family: monospace;
+    font-size: 20px;
+    margin-top: 10px;
+  }
+}
+
+.lista {
+  margin-top: 2.5vh;
+  p {
+    color: darkgrey;
+    font-size: clamp(15px, 3vh, 22px);
+    margin-bottom: 1vh;
+    strong {
+      color: var(--color-principal);
+    }
+  }
+}
+
+.dos-columnas {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 30px;
+  align-items: center;
+  img {
+    width: 100%;
+    max-height: 55vh;
+    object-fit: contain;
+    border-radius: 15px;
+  }
+}
+
+.columna-imagen img {
+  max-height: 38vh;
+  object-fit: contain;
+  margin-bottom: 1.5vh;
+}
+
+.columna-texto {
+  display: flex;
+  flex-direction: column;
+  gap: 2vh;
+}
+
+.terminal {
+  background-color: black;
+  color: var(--color-principal);
+  border: 2px solid var(--color-principal);
+  border-radius: 15px;
+  padding: 2vh 20px;
+  font-size: clamp(15px, 3vh, 22px);
+  font-family: monospace;
+  line-height: 1.5;
+}
+
+.pasos {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 15px;
+}
+
+.chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  justify-content: center;
+  margin-top: 15px;
+  span {
+    border: 2px solid var(--color-principal);
+    border-radius: 20px;
+    padding: 0.8vh 18px;
+    font-size: clamp(14px, 2.7vh, 20px);
+    color: white;
+  }
+}
+
+.slide1 {
+  display: grid;
+  grid-template-rows: auto 1fr;
+  background-image: url(./fondos/slide1_circuitos.png);
+  > h1 {
+    font-size: clamp(26px, 5.5vh, 40px);
+    margin-bottom: 1vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: var(--color-principal);
+  }
+  > .contenedor1 {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+    > div:nth-child(1) {
+      margin: 10px;
+      > h1 {
+        font-size: clamp(20px, 4.2vh, 34px);
+        margin-bottom: 1.5vh;
+      }
+      > img {
+        width: 100%;
+        max-height: 36vh;
+        object-fit: contain;
+        margin-bottom: 1.5vh;
+      }
+      > .seguridad {
+        display: flex;
+        gap: 20px;
+        align-items: center;
+        .icon {
+          font-size: clamp(36px, 7vh, 70px);
+          color: var(--color-principal);
+          border: 3px solid var(--color-principal);
+          border-radius: 50%;
+          padding: 1.2vh;
+        }
+        p {
+          color: darkgrey;
+          font-size: clamp(16px, 3.2vh, 24px);
+        }
+      }
+    }
+    > div:nth-child(2) {
+      margin: 10px;
+      > p {
+        color: black;
+        background-color: var(--color-principal);
+        font-size: clamp(16px, 3.2vh, 24px);
+        padding: 5px 15px;
+        border-radius: 8px;
+        display: inline-block;
+        margin-bottom: 2vh;
+      }
+      > .pilar {
+        display: flex;
+        gap: 20px;
+        align-items: center;
+        margin-bottom: 3vh;
+        .icon {
+          font-size: clamp(34px, 7vh, 60px);
+          color: var(--color-principal);
+          border: 3px solid var(--color-principal);
+          border-radius: 50%;
+          padding: 1.2vh;
+        }
+        h3 {
+          color: var(--color-principal);
+          font-size: clamp(19px, 3.8vh, 28px);
+          margin-bottom: 5px;
+        }
+        p {
+          color: darkgrey;
+          font-size: clamp(15px, 3vh, 22px);
+        }
+      }
+    }
+  }
+}
+
+.slide3 {
+  background-image: url(./fondos/slide3_hexagonos.png);
+}
+
+.slide5 {
+  background-image: url(./fondos/slide5_codigo_binario.png);
+}
+
+.slide8 {
+  background-image: url(./fondos/slide8_red_nodos.png);
+}
+
+.slide10 {
+  background-image: url(./fondos/slide10_circuitos_espejo.png);
+}
