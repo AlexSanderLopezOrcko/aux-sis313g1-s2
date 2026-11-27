@@ -1,0 +1,143 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Biblioteca</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <header class="header">
+      <h1>📚 Mi Biblioteca</h1>
+      <nav>
+        <a href="#agregar">Agregar libro</a>
+        <a href="#autores">Autores</a>
+        <a href="#categorias">Categorías</a>
+        <a href="#libros">Libros</a>
+      </nav>
+    </header>
+
+    <main class="contenedor">
+      <section id="agregar" class="seccion">
+        <h2>Agregar libro</h2>
+        <form id="form-libro" class="form-agregar">
+          <label for="titulo">Título</label>
+          <input
+            type="text"
+            id="titulo"
+            placeholder="Título del libro"
+            required
+          />
+
+          <label for="autor">Autor</label>
+          <select id="autor" required>
+            <option value="">Selecciona un autor</option>
+          </select>
+
+          <label for="anio">Año</label>
+          <input type="number" id="anio" placeholder="Ej: 2020" />
+
+          <label for="categoria">Categoría</label>
+          <select id="categoria" required>
+            <option value="">Selecciona una categoría</option>
+          </select>
+
+          <label for="imagen">URL de la portada</label>
+          <input
+            type="url"
+            id="imagen"
+            placeholder="https://ejemplo.com/portada.jpg"
+          />
+
+          <button type="submit">Agregar</button>
+        </form>
+      </section>
+
+      <section id="autores" class="seccion">
+        <h2>Autores</h2>
+        <form id="form-autor" class="form-agregar">
+          <label for="autor-nombre">Nombre</label>
+          <input
+            type="text"
+            id="autor-nombre"
+            placeholder="Nombre del autor"
+            required
+          />
+
+          <label for="autor-nacionalidad">Nacionalidad</label>
+          <input
+            type="text"
+            id="autor-nacionalidad"
+            placeholder="Ej: Boliviana"
+          />
+
+          <button id="CrearAutor" type="button">Agregar autor</button>
+        </form>
+
+        <h3 class="subtitulo">Lista de autores</h3>
+        <table border="1">
+          <thead>
+            <tr>
+              <th>nombre</th>
+              <th>descripcion</th>
+            </tr>
+          </thead>
+          <tbody id="lista-autores"></tbody>
+        </table>
+      </section>
+
+      <section id="categorias" class="seccion">
+        <h2>Categorías</h2>
+        <form id="form-categoria" class="form-agregar">
+          <label for="categoria-nombre">Nombre</label>
+          <input
+            type="text"
+            id="categoria-nombre"
+            placeholder="Ej: Novela"
+            required
+          />
+
+          <label for="categoria-descripcion">Descripción</label>
+          <input
+            type="text"
+            id="categoria-descripcion"
+            placeholder="Descripción de la categoría"
+          />
+
+          <button id="crear-categoria" type="button">Agregar categoría</button>
+        </form>
+
+        <h3 class="subtitulo">Lista de categorías</h3>
+        <table border="1">
+          <thead>
+            <tr>
+              <th>nombre</th>
+              <th>descripcion</th>
+            </tr>
+          </thead>
+          <tbody id="lista-categorias"></tbody>
+        </table>
+      </section>
+
+      <section id="libros" class="seccion">
+        <h2>Lista de libros</h2>
+        <form id="form-buscar" class="form-buscar">
+          <input
+            type="text"
+            id="busqueda"
+            placeholder="Buscar por título o autor..."
+          />
+          <button type="submit">Buscar</button>
+        </form>
+
+        <div id="lista-libros" class="lista-libros"></div>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <p>Tercer Parcial - Biblioteca</p>
+    </footer>
+
+    <script src="script.js"></script>
+  </body>
+</html>
